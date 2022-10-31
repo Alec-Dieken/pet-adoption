@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+
+{% block title%}{{pet.name}}{%endblock%}
+
+{% block content %}
+    <h1>{{pet.name}}</h1>
+    
+    {%if pet.photo_url%}
+    <img src="{{pet.photo_url}}" width="200px"/>
+    {%endif%}
+
+    <h2>Species: {{pet.species}}</h2>
+    <h2>Age: {{pet.age}}</h2>
+    <h2>Notes: {{pet.notes}}</h2>
+
+    {%if pet.available == True%}
+    <h3>AVAILABLE</h3>
+    {%else%}
+    <h3>NOT AVAILABLE</h3>
+    {%endif%}
+
+    <form action="" method="POST">
+        {{form.hidden_tag()}}
+        
+        {{form.photo_url.label}}
+        {{form.photo_url}}
+
+        {{form.notes.label}}
+        {{form.notes}}
+
+        {{form.available.label}}
+        {{form.available}}
+
+        <button type="submit">Save</button>
+    </form>
+{%endblock%}
